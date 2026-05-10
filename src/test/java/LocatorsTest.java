@@ -10,15 +10,12 @@ public class LocatorsTest extends BaseTest {
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
         driver.findElement(By.className("submit-button")).click();
-
-
         driver.findElement(By.id("item_3_title_link"));
         driver.findElement(By.name("add-to-cart-test.allthethings()-t-shirt-(red)"));
         driver.findElement(By.className("inventory_item_name"));
         driver.findElement(By.tagName("footer"));
         driver.findElement(By.linkText("Test.allTheThings() T-Shirt (Red)"));
         driver.findElement(By.partialLinkText("allthethings"));
-
         // XPath
         driver.findElement(By.xpath("//img[@alt='Test.allTheThings() T-Shirt (Red)']"));
         driver.findElement(By.xpath("//div[text()='Test.allTheThings() T-Shirt (Red)']"));
@@ -30,7 +27,6 @@ public class LocatorsTest extends BaseTest {
         driver.findElement(By.xpath("//div[text()='15.99']/.."));
         driver.findElement(By.xpath("//div[@class='inventory_item_price']//preceding::div[@class='inventory_item_name'][1]"));
         driver.findElement(By.xpath("//div[@class='inventory_item_name' and text()='Test.allTheThings() T-Shirt (Red)']"));
-
         //CSS Selectors
         driver.findElement(By.cssSelector(".inventory_item_container"));
         driver.findElement(By.cssSelector(".btn.btn_primary.btn_small"));
