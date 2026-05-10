@@ -3,7 +3,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class CartTest extends BaseTest {
-
     /*
     Прекондишн: Открыть браузер
     Шаги:
