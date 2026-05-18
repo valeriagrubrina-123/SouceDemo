@@ -19,10 +19,6 @@ public class LoginPage extends BasePage {
         driver.get(url);
     }
 
-    public void isPageOpened() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
-    }
-
     public void login(String user, String password) {
         driver.findElement(USERNAME_FIELD).sendKeys(user);
         driver.findElement(PASSWORD_FIELD).sendKeys(password);
@@ -33,4 +29,3 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 }
-
