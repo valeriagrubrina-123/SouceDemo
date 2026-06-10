@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions; // Добавили импорт
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
@@ -32,14 +33,13 @@ public class BaseTest {
     public void setup(@Optional("chrome") String browser, ITestContext iTestContext) {
 
         if (browser.equalsIgnoreCase("chrome")) {
-
             ChromeOptions options = getChromeOptions();
-
             driver = new ChromeDriver(options);
 
         } else if (browser.equalsIgnoreCase("firefox")) {
-
-            driver = new FirefoxDriver();
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.addArguments("--headless");
+            driver = new FirefoxDriver(firefoxOptions);
         }
 
         iTestContext.setAttribute("driver", driver);
@@ -51,7 +51,6 @@ public class BaseTest {
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
-
     }
 
     private static @NonNull ChromeOptions getChromeOptions() {
@@ -63,6 +62,8 @@ public class BaseTest {
 
         options.setExperimentalOption("prefs", chromePrefs);
 
+        options.addArguments("--headless=new");
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--incognito");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-popup-blocking");
@@ -76,5 +77,5 @@ public class BaseTest {
             driver.quit();
         }
     }
-
 }
+
